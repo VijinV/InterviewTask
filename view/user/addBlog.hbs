@@ -1,0 +1,60 @@
+<section class="container sec">
+
+  {{#if blog}}
+ <h1>Edit blog</h1>
+ 
+  {{else}}
+  <h1>Add Blog</h1>
+  {{/if}}
+    <form class="row g-3" method="post" enctype="multipart/form-data">
+    
+  <div class="col-md-6">
+    <label for="name" class="form-label">Title</label>
+    <input value="{{blog.name}}" autocomplete="off" type="text" class="form-control"  id="name" name="title">
+  </div>
+  <div class="col-md-6">
+    <label for="mrp" class="form-label">Author</label>
+    <input value="{{blog.author}}" autocomplete="off" type="text"  class="form-control" id="mrp" name="author">
+  </div>
+  
+
+  <input type="hidden" name="id" value="{{blog.id}}" id="">
+  {{#each blog.image}}
+  <div class="col-md-2">
+  <img style="width: 80px; height: 80px; border: 1px solid #ccc; margin: 5px;" src="blogImage/{{this}}">
+  </div>
+  {{/each}}
+  {{#if blog.image}}
+  {{#each blog.image }}
+ <div id="inputContainer">
+  <div class="input-group mb-3 col-md-6">
+    
+    <input autocomplete="off" value="{{this}}" type="file" name="image" class="form-control" id="inputGroupFile01">
+    <a class="btn btn-success" id="addInputButton">+</a>
+  </div>
+</div>
+{{/each}}
+{{else}}
+<div id="inputContainer">
+  <div class="input-group mb-3 col-md-6">
+    
+    <input autocomplete="off" value="{{this}}" type="file" name="image" class="form-control" id="inputGroupFile01">
+    <a class="btn btn-success" id="addInputButton">Image</a> 
+  </div>
+</div>
+{{/if}}
+
+ 
+  
+  <div class="col-12">
+    <div class="form-check">
+        <label for="description">Content</label>
+     <textarea autocomplete="off" class="form-control" id="description" name="content" aria-label="With textarea">{{blog.content}}</textarea>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary"> Create Blog</button>
+  </div>
+</form>
+</section>
+
